@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocumentAccessApproval.Domain", "DocumentAccessApproval.Domain\DocumentAccessApproval.Domain.csproj", "{FAC6EB03-A5B1-4D35-819E-0226AB1DD962}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocumentAccessApproval.Application", "DocumentAccessApproval.Application\DocumentAccessApproval.Application.csproj", "{CF6B3078-5033-4211-983B-3DE35BCEF00B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocumentAccessApproval.Infrastructure", "DocumentAccessApproval.Infrastructure\DocumentAccessApproval.Infrastructure.csproj", "{1957EBA1-2047-4390-B160-C5EC0D5E58CF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocumentAccessApproval.Api", "DocumentAccessApproval.Api\DocumentAccessApproval.Api.csproj", "{F5FA1F9B-09C0-43F3-8EFD-0B35293E5583}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentAccessApproval.Tests", "DocumentAccessApproval.Tests\DocumentAccessApproval.Tests.csproj", "{C0A98C8A-BECD-46D2-9FFE-E2E36AA300F9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FAC6EB03-A5B1-4D35-819E-0226AB1DD962}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAC6EB03-A5B1-4D35-819E-0226AB1DD962}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAC6EB03-A5B1-4D35-819E-0226AB1DD962}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAC6EB03-A5B1-4D35-819E-0226AB1DD962}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF6B3078-5033-4211-983B-3DE35BCEF00B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF6B3078-5033-4211-983B-3DE35BCEF00B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF6B3078-5033-4211-983B-3DE35BCEF00B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF6B3078-5033-4211-983B-3DE35BCEF00B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1957EBA1-2047-4390-B160-C5EC0D5E58CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1957EBA1-2047-4390-B160-C5EC0D5E58CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1957EBA1-2047-4390-B160-C5EC0D5E58CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1957EBA1-2047-4390-B160-C5EC0D5E58CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5FA1F9B-09C0-43F3-8EFD-0B35293E5583}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5FA1F9B-09C0-43F3-8EFD-0B35293E5583}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5FA1F9B-09C0-43F3-8EFD-0B35293E5583}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5FA1F9B-09C0-43F3-8EFD-0B35293E5583}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0A98C8A-BECD-46D2-9FFE-E2E36AA300F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0A98C8A-BECD-46D2-9FFE-E2E36AA300F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0A98C8A-BECD-46D2-9FFE-E2E36AA300F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0A98C8A-BECD-46D2-9FFE-E2E36AA300F9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B3392244-D7A4-49C1-ADD2-47C6D2C29C2D}
+	EndGlobalSection
+EndGlobal
