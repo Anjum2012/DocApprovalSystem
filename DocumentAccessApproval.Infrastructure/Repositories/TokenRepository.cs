@@ -32,7 +32,7 @@ namespace DocumentAccessApproval.Infrastructure.Repositories
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.NameIdentifier, user.id.ToString()),
-                    new Claim(ClaimTypes.Role,"User")  // e.g. "Admin"
+                    new Claim(ClaimTypes.Role,user.Role.ToString())  // e.g. "Admin"
                 };
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]));
                 var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
