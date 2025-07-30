@@ -20,7 +20,7 @@ Project Structure
 ├── Application # Business logic (DTOs, AutoMapping)
 ├── Domain # Entities and enums
 ├── Infrastructure (EF Core with code first approach and Repositories)
-├── Tests # Unit tests (MSTest/NUnit)
+├── Tests # Unit tests (MSTest)
 └── README.md # Project documentation
 
 Getting Started
