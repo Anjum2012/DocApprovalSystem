@@ -26,13 +26,14 @@ namespace DocumentAccessApproval.Infrastructure.Repositories
         public string CreateJWTToken(UserDto user)
         {
             var userContext = _context.Users.FirstOrDefault(x => x.Id == user.id);
-            if (userContext.Role == (UserRole)user.Role)
+             var roleName = ((UserRole)user.Role).ToString();
+            if (userContext?.Role == (UserRole)user.Role)
             {
                 // Create claims
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.NameIdentifier, user.id.ToString()),
-                    new Claim(ClaimTypes.Role,user.Role.ToString())  // e.g. "Admin"
+                    new Claim(ClaimTypes.Role,roleName)
                 };
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]));
                 var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
