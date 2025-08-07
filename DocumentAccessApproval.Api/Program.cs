@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Serilog;
 using System.Text;
 
 namespace DocumentAccessApproval.Api
@@ -18,44 +19,52 @@ namespace DocumentAccessApproval.Api
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            var logger = new LoggerConfiguration()
+                        .WriteTo.Console()
+                        .WriteTo.File("Logs/NZWalks_Log.txt", rollingInterval: RollingInterval.Minute)
+                        .MinimumLevel.Information()
+                        .CreateLogger();
+
+            builder.Logging.ClearProviders();
+            builder.Logging.AddSerilog(logger);
+            builder.Services.AddControllers();
             // Add services to the container.
 
-            builder.Services.AddControllers()
-                .AddJsonOptions(options =>
-                {
-                    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
-                });
-
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(options =>
             {
-                options.SwaggerDoc("v1", new OpenApiInfo { Title = "Document Access Approval System", Version = "v1" });
+                options.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "Document Access Approval System",
+                    Version = "v1"
+                });
+
                 options.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme, new OpenApiSecurityScheme
                 {
                     Name = "Authorization",
                     In = ParameterLocation.Header,
-                    Type = SecuritySchemeType.ApiKey,
-                    Scheme = JwtBearerDefaults.AuthenticationScheme
+                    Type = SecuritySchemeType.Http,
+                    Scheme = JwtBearerDefaults.AuthenticationScheme,
+                    BearerFormat = "JWT"
                 });
 
                 options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
                 {
-                    {
-                        new OpenApiSecurityScheme
-                            {
-                                Reference = new OpenApiReference
-                                {
-                                    Type = ReferenceType.SecurityScheme,
-                                    Id = JwtBearerDefaults.AuthenticationScheme
-                                },
-                                Scheme = "Oauth2",
-                                Name = JwtBearerDefaults.AuthenticationScheme,
-                                In = ParameterLocation.Header
-                    },
-                    new List<string>()
-                }
-            });
+                    Type = ReferenceType.SecurityScheme,
+                    Id = JwtBearerDefaults.AuthenticationScheme
+                },
+                Scheme = JwtBearerDefaults.AuthenticationScheme,
+                Name = "Authorization",
+                In = ParameterLocation.Header
+            },
+            new List<string>()
+        }
+    });
             });
 
             builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DocApprovalConnectionString")));
@@ -93,7 +102,7 @@ namespace DocumentAccessApproval.Api
             }
             app.UseMiddleware<ExceptionHandlerMiddleware>();
 
-
+            app.UseAuthentication();
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
